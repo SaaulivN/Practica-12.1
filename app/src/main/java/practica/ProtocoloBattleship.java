@@ -1,40 +1,27 @@
 package practica;
+
 public class ProtocoloBattleship {
-    // Comandos del protocolo
     public static final String INICIAR_JUEGO = "INICIAR";
     public static final String LISTO = "LISTO";
-    public static final String COLOCAR_BARCOS = "COLOCAR_BARCOS";
+    public static final String CONECTADO = "CONECTADO";
     public static final String DISPARAR = "DISPARAR";
     public static final String IMPACTO = "IMPACTO";
     public static final String FALLO = "FALLO";
     public static final String HUNDIDO = "HUNDIDO";
     public static final String JUEGO_TERMINADO = "JUEGO_TERMINADO";
-    public static final String ERROR = "ERROR";
-    public static final String SALIR = "SALIR";
-    public static final String CONECTADO = "CONECTADO";
 
-    // Separadores
     public static final String SEPARADOR_CAMPOS = "|";
     public static final String SEPARADOR_COORD = ",";
 
-    /**
-     * Construye un mensaje para disparar
-     */
     public static String construirMensajeDisparo(int x, int y) {
         return DISPARAR + SEPARADOR_CAMPOS + x + SEPARADOR_COORD + y;
     }
 
-    /**
-     * Construye un mensaje de resultado
-     */
     public static String construirMensajeResultado(String resultado, int x, int y, String tipoBarco) {
         return resultado + SEPARADOR_CAMPOS + x + SEPARADOR_COORD + y +
                 (tipoBarco != null ? SEPARADOR_CAMPOS + tipoBarco : "");
     }
 
-    /**
-     * Parsea un mensaje recibido
-     */
     public static Mensaje parsearMensaje(String mensaje) {
         if (mensaje == null || mensaje.trim().isEmpty()) {
             throw new IllegalArgumentException("Mensaje nulo o vacío");
